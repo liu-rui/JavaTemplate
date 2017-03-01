@@ -1,0 +1,40 @@
+---
+my:
+ servers:
+     - dev.bar.com
+     - foo.bar.com
+ bb:
+    - a
+    - b
+ cc: 12
+cicada:
+  rpc:
+    server:
+      port: 7912
+      serviceCentre:
+        respositoryServer: "127.0.0.1:2181"
+        name: "/Rpc/RpcDemo/V1.1"
+        server: "172.18.108.121"
+    sources:
+      - contract: ThriftCustomerService+Iface, RpcClientDemo
+        serviceFinderType: ServiceCentre
+      - contract: ThriftCustomerService+Iface, RpcClientDemo
+        serviceFinderType: ServiceCentre
+    clients:
+      -
+
+        Server: 127.0.0.1:7911
+        ServiceCentre:
+          RespositoryServer: 172.18.108.123:2181
+          Name: /Rpc/RpcDemo/V1.1
+      - contract: ThriftCustomerService+Iface, RpcClientDemo
+        ServiceFinderType: ServiceCentre
+        Server: 127.0.0.1:7911
+        ServiceCentre:
+          RespositoryServer: 172.18.108.123:2181
+          Name: /Rpc/RpcDemo/V1.1
+spring:
+  profiles:
+    active: prod
+
+
